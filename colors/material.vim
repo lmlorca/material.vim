@@ -462,7 +462,14 @@ call s:SetHighlight('ExtraWhitespace', '', s:red, '')
 
 " NERDTree
 if has('nvim')
-  call s:SetHighlight('NERDTreeFile', s:fg, '', '')
+  call s:SetHighlight('NERDTreeDir', s:comments, '', '')
+  call s:SetHighlight('NERDTreeDirSlash', s:comments, '', '')
+  call s:SetHighlight('NERDTreeFlags', s:paleblue, '', '')
+  call s:SetHighlight('NERDTreeFile', s:comments, '', '')
+  call s:SetHighlight('NERDTreeExecFile', s:comments, '', '')
+  call s:SetHighlight('NERDTreeOpenable', s:comments, '', '')
+  call s:SetHighlight('NERDTreeClosable', s:comments, '', '')
+
 endif
 
 " Neovim terminal colors
