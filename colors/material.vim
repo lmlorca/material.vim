@@ -502,9 +502,9 @@ if g:material_theme_style !~ '-community$'
   call s:SetHighlight('VimwikiImage', s:cyan, '', '')
   call s:SetHighlight('VimwikiItalic', s:pink, '', 'italic')
   call s:SetHighlight('VimwikiItalicChar', s:cyan, '', '')
-  call s:SetHighlight('VimwikiLink', s:green, '', 'underline')
+  call s:SetHighlight('VimwikiLink', s:green, '', '')
   call s:SetHighlight('VimwikiListTodo', s:cyan, '', '')
-  call s:SetHighlight('VimwikiPre', s:green, '', '')
+  call s:SetHighlight('VimwikiPre', s:comments, '', '')
   call s:SetHighlight('VimwikiWebLink1', s:green, '', 'underline')
 endif
 
@@ -522,16 +522,20 @@ hi link SignifySignDelete GitGutterDelete
 " vim-better-whitespace
 call s:SetHighlight('ExtraWhitespace', '', s:red, '')
 
+" vim-sneak
+call s:SetHighlight('Sneak', s:black, s:yellow, '')
+
 " NERDTree
 if has('nvim')
-  call s:SetHighlight('NERDTreeDir', s:comments, '', '')
+  call s:SetHighlight('NERDTreeDir', s:cyan, '', '')
   call s:SetHighlight('NERDTreeDirSlash', s:comments, '', '')
-  call s:SetHighlight('NERDTreeFlags', s:paleblue, '', '')
-  call s:SetHighlight('NERDTreeFile', s:comments, '', '')
-  call s:SetHighlight('NERDTreeExecFile', s:comments, '', '')
+  call s:SetHighlight('NERDTreeFlags', s:yellow, '', '')
+  call s:SetHighlight('NERDTreeFile', s:fg, '', '')
+  call s:SetHighlight('NERDTreeExecFile', s:pink, '', '')
   call s:SetHighlight('NERDTreeOpenable', s:comments, '', '')
   call s:SetHighlight('NERDTreeClosable', s:comments, '', '')
-
+  call s:SetHighlight('NERDTreeCWD', s:purple, '', '')
+  call s:SetHighlight('NERDTreeUp', s:yellow, '', '')
 endif
 
 " Neovim terminal colors
