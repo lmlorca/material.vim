@@ -536,6 +536,8 @@ if has('nvim')
   call s:SetHighlight('NERDTreeClosable', s:comments, '', '')
   call s:SetHighlight('NERDTreeCWD', s:purple, '', '')
   call s:SetHighlight('NERDTreeUp', s:yellow, '', '')
+  " NERDTree Syntax
+  call s:SetHighlight('WebDevIconsDefaultFolderSymbol', s:yellow, '', '')
 endif
 
 " Neovim terminal colors
