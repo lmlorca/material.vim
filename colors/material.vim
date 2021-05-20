@@ -56,6 +56,8 @@ let s:fg = { 'gui': '#eeffff', 'cterm': 231 }
 let s:invisibles = { 'gui': '#65738e', 'cterm': 66 }
 let s:comments = { 'gui': '#546e7a', 'cterm': 145 }
 let s:caret = { 'gui': '#ffcc00', 'cterm': 220 }
+let s:directory = { 'gui': '#90a4ae', 'cterm': 248 }
+let s:directory_name = { 'gui': '#c7d6de', 'cterm': 249 }
 let s:selection = { 'gui': '#2c3b41', 'cterm': 239 }
 let s:guides = { 'gui': '#37474f', 'cterm': 17 }
 let s:line_numbers = { 'gui': '#37474f', 'cterm': 145 }
@@ -85,7 +87,8 @@ if g:material_theme_style == 'palenight' || g:material_theme_style == 'palenight
   let s:line_numbers = { 'gui': '#3a3f58', 'cterm': 60 }
   let s:line_highlight = { 'gui': '#1c1f2b', 'cterm': 234 }
 elseif g:material_theme_style == 'darker' || g:material_theme_style == 'darker-community'
-  let s:bg = { 'gui': '#212121', 'cterm': 'none' }
+  " let s:bg = { 'gui': '#212121', 'cterm': 'none' }
+  let s:bg = { 'gui': 'none', 'cterm': 'none' }
   let s:fg = { 'gui': '#eeffff', 'cterm': 231 }
   let s:invisibles = { 'gui': '#65737e', 'cterm': 66 }
   let s:comments = { 'gui': '#545454', 'cterm': 59 }
@@ -161,7 +164,7 @@ call s:SetHighlight('Cursor', s:bg, s:caret, '')
 call s:SetHighlight('CursorColumn', '', s:line_highlight, '')
 call s:SetHighlight('CursorLine', '', s:line_highlight, '')
 call s:SetHighlight('CursorLineNr', s:comments, '', '')
-call s:SetHighlight('Directory', s:blue, '', '')
+call s:SetHighlight('Directory', s:directory_name, '', '')
 call s:SetHighlight('DiffAdd', s:green, s:bg, '')
 call s:SetHighlight('DiffDelete', s:red, s:bg, '')
 call s:SetHighlight('DiffChange', s:yellow, s:bg, '')
@@ -170,7 +173,7 @@ call s:SetHighlight('ErrorMsg', s:bg, s:red, 'bold')
 call s:SetHighlight('FoldColumn', s:line_numbers, s:bg, '')
 call s:SetHighlight('Folded', s:brown, s:bg, 'bold')
 call s:SetHighlight('LineNr', s:line_numbers, '', '')
-call s:SetHighlight('MatchParen', s:comments, s:cyan, 'bold')
+call s:SetHighlight('MatchParen', s:caret, s:bg, 'bold')
 call s:SetHighlight('ModeMsg', s:green, '', '')
 call s:SetHighlight('MoreMsg', s:green, '', '')
 call s:SetHighlight('NonText', s:comments, '', '')
@@ -186,16 +189,16 @@ call s:SetHighlight('SignColumn', s:fg, s:bg, '')
 call s:SetHighlight('SpecialKey', s:comments, '', '')
 call s:SetHighlight('SpellCap', s:blue, '', 'undercurl')
 call s:SetHighlight('SpellBad', s:red, '', 'undercurl')
-call s:SetHighlight('StatusLine', s:fg, s:selection, '')
-call s:SetHighlight('StatusLineNC', s:comments, s:selection, '')
+call s:SetHighlight('StatusLine', s:fg, s:bg, '')
+call s:SetHighlight('StatusLineNC', s:comments, s:bg, '')
 call s:SetHighlight('StatusLineTerm', s:bg, s:green, '')
 call s:SetHighlight('StatusLineTermNC', s:bg, s:green, '')
 call s:SetHighlight('TabLine', s:fg, s:line_numbers, '')
 call s:SetHighlight('TabLineFill', s:fg, s:selection, '')
 call s:SetHighlight('TabLineSel', s:bg, s:cyan, '')
 call s:SetHighlight('Title', s:green, '', '')
-call s:SetHighlight('VertSplit', s:comments, '', '')
-call s:SetHighlight('Visual', s:fg, s:selection, '')
+call s:SetHighlight('VertSplit', s:line_highlight, '', '')
+call s:SetHighlight('Visual', s:comments, s:selection, '')
 call s:SetHighlight('WarningMsg', s:red, '', '')
 call s:SetHighlight('WildMenu', s:bg, s:cyan, '')
 
@@ -588,3 +591,31 @@ call s:SetHighlight('TSType', s:yellow, '', '')
 call s:SetHighlight('TSVariable', s:fg, '', '')
 call s:SetHighlight('TSVariableBuiltin', s:fg, '', '')
 
+" Neovim LSP
+call s:SetHighlight('LspDiagnosticsSignError', s:red, '', '')
+call s:SetHighlight('LspDiagnosticsSignWarning', s:yellow, '', '')
+call s:SetHighlight('LspDiagnosticsSignInformation', s:comments, '', '')
+call s:SetHighlight('LspDiagnosticsSignHint', s:cyan, '', '')
+
+call s:SetHighlight('LspDiagnosticsVirtualTextError', s:red, '', '')
+call s:SetHighlight('LspDiagnosticsVirtualTextWarning', s:yellow, '', '')
+call s:SetHighlight('LspDiagnosticsVirtualTextInformation', s:comments, '', '')
+call s:SetHighlight('LspDiagnosticsVirtualTextHint', s:cyan, '', '')
+
+" lukas-reineke/indent-blankline.nvim
+call s:SetHighlight('IndentBlanklineChar', s:selection, '', '')
+call s:SetHighlight('IndentBlanklineContextChar', s:line_numbers, '', '')
+
+" kyazdani42/nvim-tree.lua
+call s:SetHighlight('NvimTreeIndentMarker', s:line_numbers, '', '')
+call s:SetHighlight('NvimTreeFolderIcon', s:directory, '', '')
+
+call s:SetHighlight('NvimTreeGitDirty', s:blue, '', '')
+call s:SetHighlight('NvimTreeFileDirty', s:blue, '', '')
+
+call s:SetHighlight('NvimTreeGitNew', s:green, '', '')
+call s:SetHighlight('NvimTreeFileNew', s:green, '', '')
+
+" nvim-telescope/telescope.nvim
+call s:SetHighlight('TelescopeNormal', s:directory_name, '', '')
+call s:SetHighlight('TelescopeBorder', s:comments, '', '')
